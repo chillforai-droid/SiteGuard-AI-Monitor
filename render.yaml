@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ai-website-monitor
+    env: node
+    plan: free
+    buildCommand: npm install && npx playwright install-deps chromium && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: PLAYWRIGHT_BROWSERS_PATH
+        value: /opt/render/.cache/ms-playwright
